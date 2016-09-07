@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 	private static final String RAW = ".raw";
 	private static final String AUDIO_RECORDER_FOLDER = "AudioRecorder"; // 默认录音文件的存储位置
 	private static final String AUDIO_RECORDER_TEMP_FILE = "record_temp";
-	private static int frequency = 22050;
+	private static int frequency = 44100;
 	private static int channelConfiguration = AudioFormat.CHANNEL_IN_MONO;// 单声道
 	private static int EncodingBitRate = AudioFormat.ENCODING_PCM_16BIT; // 音频数据格式：脉冲编码调制（PCM）每个样品16位
 	private AudioRecord audioRecord = null;
@@ -140,7 +140,9 @@ public class MainActivity extends Activity {
 	}
 	
 	private void writeAudioDataToFile() {
+		int multiple = 4;
 		byte data[] = new byte[recBufSize];
+		byte temp[] = new byte[recBufSize * multiple];
 		String orinRaw = getTempFilename();
 		String orinWav = getFilename();
 		FileOutputStream os = null;
@@ -160,8 +162,16 @@ public class MainActivity extends Activity {
 		if (null != os) {
 			while (isRecording) {
 				read = audioRecord.read(data, 0, recBufSize);
-
-				Transmisson.UDPSocketSend(data);
+				//Transmisson.UDPSocketSend(data);
+				count++;
+				if(count != multiple) {
+					System.arraycopy(data, 0, temp, (count - 1) * recBufSize, recBufSize);
+				} else if(count == multiple){
+					System.arraycopy(data, 0, temp, (count - 1) * recBufSize, recBufSize);
+					Transmisson.UDPSocketSend(temp);
+					count = 0;
+				}
+				
 				/*
 				if (AudioRecord.ERROR_INVALID_OPERATION != read) {
 					try {
@@ -190,7 +200,7 @@ public class MainActivity extends Activity {
 
 			try {
 				os.close();
-				Transmisson.close();
+				//Transmisson.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -209,6 +219,7 @@ public class MainActivity extends Activity {
 				@Override
 				public void run() {
 					Transmisson.UDPSocketSend("1010".getBytes());
+					Transmisson.close();
 					/*try {
 						Thread.sleep(2000);
 					} catch (InterruptedException e) {

@@ -19,13 +19,14 @@ public class Play {
 	private static Thread playingThread = null;
 	private static int finalRawTag;
 	static AudioTrack audioTrack;
+	private static int frequency = 44100;
 	private static boolean isPlaying = false;
 	
 	public static void audioTrackPlay() {
 		
-		int bufferSizeInBytes = AudioTrack.getMinBufferSize(22050,
+		int bufferSizeInBytes = AudioTrack.getMinBufferSize(frequency,
 				AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT);
-		audioTrack = new AudioTrack(AudioManager.STREAM_VOICE_CALL, 22050,
+		audioTrack = new AudioTrack(AudioManager.STREAM_VOICE_CALL, frequency,
 				AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT,
 				2 * bufferSizeInBytes, AudioTrack.MODE_STREAM);
 		audioTrack.play();
