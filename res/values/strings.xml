@@ -4,5 +4,7 @@
     <string name="app_name">record</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <string name="fan_controller">control your fan</string>
 
 </resources>

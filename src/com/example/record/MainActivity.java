@@ -9,8 +9,11 @@ import java.io.UnsupportedEncodingException;
 
 import com.example.play.Play;
 import com.example.transmission.Transmisson;
+import com.example.bell.BellService;
+import com.example.fan.FanActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -53,7 +56,6 @@ public class MainActivity extends Activity {
 		play1 = (Button) findViewById(R.id.play);
 
 		start1.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				startRecord();
@@ -63,22 +65,33 @@ public class MainActivity extends Activity {
 			}
 		});
 		stop1.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				stopRecord();
 				txt.setText("結束了");
-
 			}
 		});
 		play1.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				Play.replay(finalRawTag);
 				txt.setText("playing");
 			}
 		});
+		
+		//go to FanActivity
+		final Intent intent = new Intent(this, FanActivity.class);
+		Button fan = (Button) findViewById(R.id.fanController);
+		fan.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				startActivity(intent);
+			}
+		});
+		
+		//start BellService
+		Intent startIntent = new Intent(this, BellService.class);  
+        startService(startIntent);
 	}
 
 	private String getFilename() {

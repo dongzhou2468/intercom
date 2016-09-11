@@ -6,54 +6,35 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.record.MainActivity" >
+    tools:context="com.example.fan.FanActivity" >
 
     <Button
-        android:id="@+id/start"
+        android:id="@+id/fanOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/textView2"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="77dp"
         android:layout_marginLeft="27dp"
         android:text="start" />
 
     <Button
-        android:id="@+id/stop"
+        android:id="@+id/fanOff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/start"
+        android:layout_alignBottom="@+id/fanOn"
         android:layout_alignParentRight="true"
         android:layout_marginRight="33dp"
         android:text="stop" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginRight="40dp"
         android:layout_marginTop="30dp"
-        android:layout_toLeftOf="@+id/stop"
-        android:text="@string/hello_world" />
+        android:layout_toLeftOf="@+id/fanOff"
+        android:text="@string/fan_controller" />
 
-    <Button
-        android:id="@+id/play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="33dp"
-        android:layout_marginTop="90dp"
-        android:text="play" />
-    
-    <Button
-        android:id="@+id/fanController"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/play"
-        android:layout_toLeftOf="@+id/play"
-        android:text="Fan Controller" />
-
-    
 </RelativeLayout>

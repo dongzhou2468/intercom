@@ -22,6 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.fan.FanActivity" android:label="@string/app_name">
+        </activity>
+        
+        <service android:name="com.example.bell.BellService">
+        </service>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

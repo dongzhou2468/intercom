@@ -17,6 +17,8 @@ public class Transmisson {
 	private static InetAddress IPAddress;
 	private static DatagramSocket mSocket, stopSocket;
 
+	private final static int PORT_FAN = 4143;
+	
 	public static void connect() {
 		try {
 			mSocket = new DatagramSocket(PORT);
@@ -46,6 +48,22 @@ public class Transmisson {
 		Log.i("myLog", "sending done......data.length: " + data.length);
 	}
 
+	public static void UDPSocketSendFan(byte[] data) {
+
+		if (mSocket == null) {
+			Log.i("myLog", "mSocket == null...UDPSocketSendFan");
+			return;
+		}
+		DatagramPacket sendPacket = new DatagramPacket(data, data.length,
+				IPAddress, PORT_FAN);
+		try {
+			mSocket.send(sendPacket);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Log.i("myLog", "UDPSocketSendFan sending done......data.length: " + data.length);
+	}
+	
 	public static byte[] UDPSocketRecv() {
 		
 		byte recvByte[] = new byte[2048];
