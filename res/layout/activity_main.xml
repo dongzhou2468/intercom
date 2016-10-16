@@ -55,5 +55,12 @@
         android:layout_toLeftOf="@+id/play"
         android:text="Fan Controller" />
 
+    <Button
+        android:id="@+id/musicController"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/play"
+        android:layout_toLeftOf="@+id/fanController"
+        android:text="Music Controller" />
     
 </RelativeLayout>

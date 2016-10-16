@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+import com.example.music.MusicActivity;
 import com.example.play.Play;
 import com.example.transmission.Transmisson;
 import com.example.bell.BellService;
@@ -86,6 +87,16 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				startActivity(intent);
+			}
+		});
+		
+		//go to MusicActivity
+		final Intent intentMusic = new Intent(this, MusicActivity.class);
+		Button music = (Button) findViewById(R.id.musicController);
+		music.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				startActivity(intentMusic);
 			}
 		});
 		
@@ -224,7 +235,7 @@ public class MainActivity extends Activity {
 
 	private void stopRecord() {
 		
-		if (null != audioRecord) {
+		if (null != audioRecord) {				// stop directly?
 			isRecording = false;
 			Play.setPlaying(isRecording);
 			

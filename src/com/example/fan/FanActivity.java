@@ -18,7 +18,7 @@ public class FanActivity extends Activity {
 	private Button fanOn, fanOff;
 	private String FAN_ON = "0000";
 	private String FAN_OFF = "1111";
-	private String serverIP = "192.168.1.126";
+	private String serverIP = "192.168.1.100";
 	private int serverPort = 4143;
 
 	private boolean ON = false;

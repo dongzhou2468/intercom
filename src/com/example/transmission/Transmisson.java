@@ -13,7 +13,7 @@ public class Transmisson {
 
 	//private static Thread sendingThread = null;
 	private final static int PORT = 4142;
-	private static String serverIP = "192.168.1.126";
+	private static String serverIP = "192.168.1.100";
 	private static InetAddress IPAddress;
 	private static DatagramSocket mSocket, stopSocket;
 

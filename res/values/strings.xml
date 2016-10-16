@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     
     <string name="fan_controller">control your fan</string>
+    <string name="music_controller">play music</string>
 
 </resources>
